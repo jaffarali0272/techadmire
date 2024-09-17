@@ -1,0 +1,32 @@
+CREATE SCHEMA registration ;
+
+
+CREATE TABLE `university` (
+  `university_id` bigint NOT NULL AUTO_INCREMENT,
+  `uni_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`university_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `course` (
+  `course_id` bigint NOT NULL AUTO_INCREMENT,
+  `university_id` bigint NOT NULL,
+  `course` varchar(255) DEFAULT NULL,
+  `couse` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`course_id`),
+  KEY `FK4ag2rc4adjiesa1d0lcvnnq82` (`university_id`),
+  CONSTRAINT `FK4ag2rc4adjiesa1d0lcvnnq82` FOREIGN KEY (`university_id`) REFERENCES `university` (`university_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `registration` (
+  `course_id` bigint NOT NULL,
+  `reg_id` bigint NOT NULL AUTO_INCREMENT,
+  `student_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`reg_id`),
+  KEY `FKo0ifq05dge7ssg2voqs6wtik6` (`course_id`),
+  CONSTRAINT `FKo0ifq05dge7ssg2voqs6wtik6` FOREIGN KEY (`course_id`) REFERENCES `course` (`course_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
